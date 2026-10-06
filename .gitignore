@@ -1,0 +1,15 @@
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Système
+.DS_Store
+Thumbs.db
+
+# Web (React / Vite)
+web/node_modules/
+web/dist/
+
+# Desktop (JavaFX / Maven)
+desktop/target/
