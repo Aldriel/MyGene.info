@@ -1,0 +1,201 @@
+/*
+ * MyGene Explorer theme. Sizes are expressed in em so that the whole interface follows the
+ * text size chosen in the View menu (set as -fx-font-size on the root node).
+ */
+
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+    -fx-accent: #4f46e5;
+    -fx-focus-color: #6366f1;
+    -fx-faint-focus-color: #6366f122;
+}
+
+.app-root {
+    -fx-background-color: #f8fafc;
+}
+
+/* Header */
+
+.header {
+    -fx-padding: 1.2em 1.4em 1em 1.4em;
+    -fx-spacing: 0.4em;
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #e2e8f0 transparent;
+}
+
+.app-title {
+    -fx-font-size: 1.7em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.muted {
+    -fx-text-fill: #64748b;
+}
+
+.small {
+    -fx-font-size: 0.85em;
+}
+
+.search-bar {
+    -fx-spacing: 0.7em;
+    -fx-padding: 0.6em 0 0 0;
+    -fx-alignment: center-left;
+}
+
+.text-field:error {
+    -fx-border-color: #dc2626;
+    -fx-border-radius: 3;
+}
+
+.primary-button {
+    -fx-background-color: #4f46e5;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 0.45em 1.3em;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #4338ca;
+}
+
+.primary-button:disabled {
+    -fx-opacity: 0.5;
+}
+
+/* Content */
+
+.content {
+    -fx-padding: 1.2em 1.4em;
+    -fx-spacing: 1em;
+}
+
+.card {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 1.1em 1.3em;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.06), 6, 0, 0, 1);
+}
+
+.welcome {
+    -fx-spacing: 0.8em;
+    -fx-max-width: 46em;
+}
+
+.welcome-title {
+    -fx-font-size: 1.35em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.gene-symbol {
+    -fx-font-size: 1.6em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.gene-name {
+    -fx-font-size: 1.1em;
+    -fx-text-fill: #334155;
+}
+
+.detail-label {
+    -fx-text-fill: #64748b;
+    -fx-font-weight: bold;
+}
+
+.gene-summary {
+    -fx-text-fill: #475569;
+    -fx-line-spacing: 0.15em;
+}
+
+.section-title {
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.highlight {
+    -fx-font-size: 1.05em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #b91c1c;
+}
+
+/* Tabs and table */
+
+.tab-pane > .tab-header-area > .headers-region > .tab {
+    -fx-padding: 0.25em 1em;
+}
+
+.tab-content {
+    -fx-padding: 0.8em;
+    -fx-spacing: 0.6em;
+    -fx-background-color: white;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+}
+
+.hgvs {
+    -fx-font-family: "Consolas", "Menlo", monospace;
+}
+
+.badge {
+    -fx-padding: 0.1em 0.65em;
+    -fx-background-radius: 1em;
+    -fx-font-size: 0.85em;
+    -fx-font-weight: bold;
+}
+
+.badge.pathogenic        { -fx-background-color: #fee2e2; -fx-text-fill: #991b1b; }
+.badge.likely-pathogenic { -fx-background-color: #ffedd5; -fx-text-fill: #9a3412; }
+.badge.conflicting       { -fx-background-color: #f3e8ff; -fx-text-fill: #6b21a8; }
+.badge.uncertain         { -fx-background-color: #fef3c7; -fx-text-fill: #92400e; }
+.badge.likely-benign     { -fx-background-color: #d1fae5; -fx-text-fill: #065f46; }
+.badge.benign            { -fx-background-color: #a7f3d0; -fx-text-fill: #064e3b; }
+.badge.other             { -fx-background-color: #f1f5f9; -fx-text-fill: #334155; }
+
+.legend-swatch {
+    -fx-min-width: 0.9em;
+    -fx-min-height: 0.9em;
+    -fx-max-width: 0.9em;
+    -fx-max-height: 0.9em;
+    -fx-background-radius: 0.2em;
+}
+
+/* Status bar */
+
+.status-bar {
+    -fx-padding: 0.35em 1.4em;
+    -fx-spacing: 1em;
+    -fx-alignment: center-left;
+    -fx-background-color: #f1f5f9;
+    -fx-border-color: #e2e8f0 transparent transparent transparent;
+}
+
+.status-label {
+    -fx-text-fill: #475569;
+}
+
+.status-label:error {
+    -fx-text-fill: #b91c1c;
+    -fx-font-weight: bold;
+}
+
+/* Dialogs */
+
+.about-title {
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
+}

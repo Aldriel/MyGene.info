@@ -4,19 +4,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <!-- Application desktop JavaFX de MyGene Explorer. -->
+    <!-- JavaFX desktop application of MyGene Explorer. -->
 
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.mygeneexplorer</groupId>
     <artifactId>mygene-explorer-desktop</artifactId>
-    <version>0.1.0</version>
+    <version>1.0.0</version>
+    <name>MyGene Explorer</name>
 
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javafx.version>21.0.5</javafx.version>
         <jackson.version>2.18.2</jackson.version>
+        <pdfbox.version>3.0.8</pdfbox.version>
+        <junit.version>5.11.4</junit.version>
     </properties>
 
     <dependencies>
@@ -30,19 +33,104 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>${pdfbox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
+        <resources>
+            <!-- Only app.properties is filtered: it receives the project version. -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>org/mygeneexplorer/app.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>org/mygeneexplorer/app.properties</exclude>
+                </excludes>
+            </resource>
+        </resources>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <propertiesEncoding>UTF-8</propertiesEncoding>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
+                <executions>
+                    <execution>
+                        <id>default-testCompile</id>
+                        <configuration>
+                            <compilerArgs>
+                                <!-- Local HTTP server used by the tests only. -->
+                                <arg>--add-modules=jdk.httpserver</arg>
+                                <arg>--add-reads=org.mygeneexplorer=jdk.httpserver</arg>
+                            </compilerArgs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+                <configuration>
+                    <useModulePath>false</useModulePath>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.12</version>
+                <configuration>
+                    <excludes>
+                        <!-- UI wiring, exercised manually rather than by unit tests. -->
+                        <exclude>org/mygeneexplorer/MyGeneExplorerApp*</exclude>
+                        <exclude>org/mygeneexplorer/ui/**</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
+                <configuration>
+                    <mainClass>org.mygeneexplorer/org.mygeneexplorer.MyGeneExplorerApp</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

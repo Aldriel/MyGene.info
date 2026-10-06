@@ -1,2 +1,2 @@
-# Normalise les fins de ligne en LF dans le dépôt, quel que soit l'OS.
+# Normalize line endings to LF in the repository, whatever the OS.
 * text=auto eol=lf

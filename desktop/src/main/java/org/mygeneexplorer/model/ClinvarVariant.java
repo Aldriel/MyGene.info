@@ -3,15 +3,15 @@ package org.mygeneexplorer.model;
 import java.util.List;
 
 /**
- * Variant ClinVar associé à un gène.
+ * ClinVar variant associated with a gene.
  *
- * <p>Un même variant peut avoir plusieurs soumissions ClinVar (RCV), d'où les listes
- * de significations cliniques et d'origines.
+ * <p>A variant may have several ClinVar submissions (RCV), hence the lists of clinical
+ * significances and origins.
  *
- * @param hgvs                  notation HGVS génomique, par exemple {@code chr17:g.41199721C>T}
- * @param variantId             identifiant de variation ClinVar, ou {@code null} s'il est absent
- * @param clinicalSignificances significations cliniques distinctes (ex. « Pathogenic »)
- * @param origins               origines distinctes (ex. « germline »)
+ * @param hgvs                  genomic HGVS notation, e.g. {@code chr17:g.41199721C>T}
+ * @param variantId             ClinVar variation identifier, or {@code null} if absent
+ * @param clinicalSignificances distinct clinical significances (e.g. "Pathogenic")
+ * @param origins               distinct origins (e.g. "germline")
  */
 public record ClinvarVariant(
         String hgvs,
@@ -23,14 +23,14 @@ public record ClinvarVariant(
     private static final String CLINVAR_VARIATION_URL =
             "https://www.ncbi.nlm.nih.gov/clinvar/variation/";
 
-    /** Copie défensive : les listes du record restent immuables. */
+    /** Defensive copy: the lists of the record stay immutable. */
     public ClinvarVariant {
         clinicalSignificances = List.copyOf(clinicalSignificances);
         origins = List.copyOf(origins);
     }
 
     /**
-     * @return l'URL de la fiche ClinVar du variant, ou {@code null} sans identifiant
+     * @return the URL of the ClinVar record of the variant, or {@code null} without identifier
      */
     public String clinvarUrl() {
         return variantId == null ? null : CLINVAR_VARIATION_URL + variantId + "/";

@@ -1,4 +1,4 @@
-# Conventions de formatage partagées par les éditeurs (https://editorconfig.org)
+# Formatting conventions shared by editors (https://editorconfig.org)
 root = true
 
 [*]
