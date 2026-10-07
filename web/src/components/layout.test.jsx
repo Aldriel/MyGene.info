@@ -1,3 +1,19 @@
+/*
+ * Copyright 2026 Maxime Ethier - Consultant en Bioinformatique/Biocomputing Consultant
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 // @vitest-environment jsdom
 import { screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
@@ -125,28 +141,39 @@ describe('Welcome', () => {
 })
 
 describe('Footer', () => {
-  it('signs with the English business title and links', () => {
+  it('signs with the English business title, contact, licence, availability and Ko-fi', () => {
     renderWithI18n(<Footer />)
 
-    expect(screen.getByText('Maxime Ethier - Biocomputing Consultant')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'www.maximeethier.com/en' })).toHaveAttribute(
-      'href',
-      'https://www.maximeethier.com/en',
-    )
+    expect(
+      screen.getByRole('link', { name: '© 2026 Maxime Ethier - Biocomputing Consultant' }),
+    ).toHaveAttribute('href', 'https://www.maximeethier.com/en')
     expect(screen.getByRole('link', { name: 'contact@maximeethier.com' })).toHaveAttribute(
       'href',
       'mailto:contact@maximeethier.com',
     )
-    expect(screen.getByText(/MyGene Explorer · Version/)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Apache License 2.0' })).toHaveAttribute(
+      'href',
+      expect.stringMatching(/LICENSE\.txt$/),
+    )
+    expect(
+      screen.getByText('Available for bioinformatics contracts or employment.'),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Support me on Ko-fi' })).toHaveAttribute(
+      'href',
+      'https://ko-fi.com/K1S228CL7A',
+    )
   })
 
   it('signs with the French business title and website', () => {
     renderWithI18n(<Footer />, { language: 'fr' })
 
-    expect(screen.getByText('Maxime Ethier - Consultant en Bio-informatique')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'www.maximeethier.com' })).toHaveAttribute(
-      'href',
-      'https://www.maximeethier.com',
-    )
+    expect(
+      screen.getByRole('link', { name: '© 2026 Maxime Ethier - Consultant en Bio-informatique' }),
+    ).toHaveAttribute('href', 'https://www.maximeethier.com')
+    expect(
+      screen.getByText('Disponible pour des contrats ou un emploi en bio-informatique.'),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Licence Apache 2.0' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Soutenez-moi sur Ko-fi' })).toBeInTheDocument()
   })
 })

@@ -1,4 +1,21 @@
+/*
+ * Copyright 2026 Maxime Ethier - Consultant en Bioinformatique/Biocomputing Consultant
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import { useMemo, useState } from 'react'
+import { APP_VERSION, BRAND } from '../brand.js'
 import { exportResult } from '../export/exportResult.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { matchesFilter, sortVariants } from '../model/variants.js'
@@ -15,8 +32,8 @@ const SECONDARY_BUTTON_CLASSES = [
 ].join(' ')
 
 /**
- * Result of a search: gene card, actions (export, share, open) and the variants and summary
- * tabs.
+ * Result of a search: gene card, actions (export, share, open), the variants and summary tabs,
+ * then the data sources, version and disclaimer.
  *
  * @param {{result: object, shareUrl: string, onOpenFile: () => void,
  *   onStatus: (render: (translator: object) => string, isError?: boolean) => void}} props
@@ -115,6 +132,11 @@ export default function ResultsView({ result, shareUrl, onOpenFile, onStatus }) 
           )}
         </div>
       </section>
+
+      <p className="text-center text-xs text-slate-500">
+        {t('status.sources')} · {BRAND.application} {t('footer.version', { version: APP_VERSION })}{' '}
+        · {t('app.disclaimer')}
+      </p>
     </div>
   )
 }

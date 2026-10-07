@@ -1,3 +1,19 @@
+/*
+ * Copyright 2026 Maxime Ethier - Consultant en Bioinformatique/Biocomputing Consultant
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /**
  * Interface texts in English and French.
  *
@@ -105,7 +121,11 @@ const en = {
   'brand.title': 'Maxime Ethier - Biocomputing Consultant',
   'brand.website': 'https://www.maximeethier.com/en',
 
-  'footer.builtBy': 'Designed and developed by',
+  'footer.license': 'Apache License 2.0',
+  'footer.licenseTitle': 'Read the license under which this application is distributed',
+  'footer.availability': 'Available for bioinformatics contracts or employment.',
+  'footer.kofi': 'Support me on Ko-fi',
+  'footer.kofiTitle': 'Support the development of this application with a donation on Ko-fi',
   'footer.version': 'Version {version}',
 
   'error.title': 'Error',
@@ -232,7 +252,11 @@ const fr = {
   'brand.title': 'Maxime Ethier - Consultant en Bio-informatique',
   'brand.website': 'https://www.maximeethier.com',
 
-  'footer.builtBy': 'Conçu et développé par',
+  'footer.license': 'Licence Apache 2.0',
+  'footer.licenseTitle': 'Lire la licence sous laquelle cette application est distribuée',
+  'footer.availability': 'Disponible pour des contrats ou un emploi en bio-informatique.',
+  'footer.kofi': 'Soutenez-moi sur Ko-fi',
+  'footer.kofiTitle': 'Soutenir le développement de cette application par un don sur Ko-fi',
   'footer.version': 'Version {version}',
 
   'error.title': 'Erreur',

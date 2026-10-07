@@ -158,3 +158,11 @@ push to `main` and on every pull request.
 
 Data is provided by the BioThings APIs and ClinVar (NCBI). This tool is intended for research
 and exploration only and must not be used for clinical decision-making.
+
+## License
+
+Copyright 2026 Maxime Ethier - Consultant en Bioinformatique/Biocomputing Consultant.
+
+This project is licensed under the Apache License 2.0: see the [`LICENSE`](LICENSE) file.
+The web application publishes it as `LICENSE.txt` and links to it from its footer; the footer
+of the desktop application links to the official text on apache.org.

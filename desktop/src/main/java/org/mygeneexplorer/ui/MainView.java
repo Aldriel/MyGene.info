@@ -1,3 +1,19 @@
+/*
+ * Copyright 2026 Maxime Ethier - Consultant en Bioinformatique/Biocomputing Consultant
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.mygeneexplorer.ui;
 
 import javafx.application.HostServices;
@@ -55,8 +71,8 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 /**
- * View of the main window: menus, search bar, gene card, variant table, summary chart and
- * status bar.
+ * View of the main window: menus, search bar, gene card, variant table, summary chart, status
+ * bar and footer.
  *
  * <p>It displays the {@link AppState} through bindings and forwards every user action to the
  * {@link MainController}. The text size is applied as {@code -fx-font-size} on the scene root;
@@ -120,7 +136,7 @@ public final class MainView {
         root.getStyleClass().add("app-root");
         root.setTop(new VBox(buildMenuBar(), buildHeader()));
         root.setCenter(content);
-        root.setBottom(buildStatusBar());
+        root.setBottom(new VBox(buildStatusBar(), new AppFooter(i18n, this::openUrl)));
 
         bindFontSize();
         state.resultProperty().addListener((obs, old, value) -> showResult(value));
