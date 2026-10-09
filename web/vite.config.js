@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { defineConfig } from 'vite'
+import { configDefaults } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
@@ -62,6 +63,8 @@ export default defineConfig({
   },
   test: {
     environment: 'node',
+    // Functional tests in e2e/ run in a browser with Playwright ("npm run test:e2e").
+    exclude: [...configDefaults.exclude, 'e2e/**'],
     setupFiles: ['./src/test/setup.js'],
     coverage: {
       provider: 'v8',

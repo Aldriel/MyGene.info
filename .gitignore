@@ -11,6 +11,8 @@ Thumbs.db
 web/node_modules/
 web/dist/
 web/coverage/
+web/test-results/
+web/playwright-report/
 
 # Desktop (JavaFX / Maven)
 desktop/target/

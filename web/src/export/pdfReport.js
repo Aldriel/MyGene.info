@@ -280,6 +280,7 @@ class ReportWriter {
         ].map(pdfText),
       ),
       showHead: 'everyPage',
+      rowPageBreak: 'avoid',
       styles: {
         font: 'helvetica',
         fontSize: BODY_SIZE - 1,
@@ -305,7 +306,10 @@ class ReportWriter {
       },
       didDrawCell: (data) => {
         if (data.section !== 'body' || data.column.index !== 2) return
-        const color = colorOf(primaryOf(rows[data.row.index]))
+        // The part of a row continued on the next page has the index -1: no swatch there.
+        const variant = rows[data.row.index]
+        if (!variant) return
+        const color = colorOf(primaryOf(variant))
         this.fillRect(data.cell.x + 4, data.cell.y + 5, SWATCH_SIZE, SWATCH_SIZE, color)
       },
     })

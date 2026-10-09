@@ -103,6 +103,14 @@ describe('buildPdfReport', () => {
     expect(content.split('/URI (mailto:contact@maximeethier.com)').length - 1).toBe(pages)
   })
 
+  it('keeps tall rows whole at page breaks', () => {
+    const significances = ['Pathogenic/Likely pathogenic', 'Likely pathogenic', 'Pathogenic']
+    const origins = ['germline', 'unknown', 'somatic']
+    const rows = Array.from({ length: 80 }, (_, i) => variant(i + 1, significances, origins))
+
+    expect(build('en', { rows }).getNumberOfPages()).toBeGreaterThan(2)
+  })
+
   it('is translated', () => {
     const content = raw(build('fr'))
 
